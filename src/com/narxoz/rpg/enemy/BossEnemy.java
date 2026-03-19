@@ -25,7 +25,7 @@ public class BossEnemy {
 
     public void takeDamage(int amount) {
         // TODO: Decide how boss damage should be applied and clamped.
-        health -= amount;
+        health = Math.max(0, health - amount);
     }
 
     public boolean isAlive() {
