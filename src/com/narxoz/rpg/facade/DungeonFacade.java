@@ -18,12 +18,14 @@ public class DungeonFacade {
         // TODO: Coordinate subsystem calls in a clean order.
         // Suggested flow:
         // 1) preparation
-        // 2) battle
-        // 3) reward
-        AdventureResult result = battleService.battle(hero, boss, action);
         String preparationSummary = preparationService.prepare(hero, boss, action);
+        // 2) battle
+        AdventureResult result = battleService.battle(hero, boss, action);
+        result.getLog().toString();
         result.addLine(preparationSummary);
+        // 3) reward
         result.setReward(rewardService.determineReward(result));
+
         return result;
     }
 }
